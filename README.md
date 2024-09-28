@@ -2,6 +2,7 @@
 
 Mimic `detect.py` details for `.mlpackage --nms`
 
+- `hockeypuck.yaml`
 - `test_image.py`
 - `test_video.py`
 

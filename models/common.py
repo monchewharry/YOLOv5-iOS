@@ -717,10 +717,12 @@ class DetectMultiBackend(nn.Module):
             # im = im.resize((192, 320), Image.BILINEAR)
             y = self.model.predict({"image": im})  # coordinates are xywh normalized
             if "confidence" in y:
+                print("Ding: confidence detected in y. line:720")
                 box = xywh2xyxy(y["coordinates"] * [[w, h, w, h]])  # xyxy pixels
-                conf, cls = y["confidence"].max(1), y["confidence"].argmax(1).astype(np.float)
+                conf, cls = y["confidence"].max(1), y["confidence"].argmax(1).astype(np.float64)
                 y = np.concatenate((box, conf.reshape(-1, 1), cls.reshape(-1, 1)), 1)
             else:
+                print("Ding: confidence not found in y. y will be reversed. line:725")
                 y = list(reversed(y.values()))  # reversed for segmentation models (pred, proto)
         elif self.paddle:  # PaddlePaddle
             im = im.cpu().numpy().astype(np.float32)

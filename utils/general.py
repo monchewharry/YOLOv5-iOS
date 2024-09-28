@@ -1035,8 +1035,12 @@ def non_max_suppression(
     mps = "mps" in device.type  # Apple MPS
     if mps:  # MPS not fully supported yet, convert tensors to CPU before NMS
         prediction = prediction.cpu()
+    
+    print(f"Ding: prediction.shape: {prediction.shape}")
+    print(f"Ding: number of mask (nm): {nm}")
     bs = prediction.shape[0]  # batch size
     nc = prediction.shape[2] - nm - 5  # number of classes
+    print(f"Ding: number of class(nc):{nc}")
     xc = prediction[..., 4] > conf_thres  # candidates
 
     # Settings

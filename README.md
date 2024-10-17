@@ -8,6 +8,24 @@ Mimic `detect.py` details for `.mlpackage --nms`
 - `test_image.py`
 - `test_video.py`
 
+## Train
+
+**on m-chip macOS**
+
+```bash
+python -c "import torch; print(torch.__version__); print(torch.backends.mps.is_available())"
+
+python train.py --img 640 --batch 16 --epochs 50 --data ./project/yaml/hockey.yaml --weights yolov5s.pt --cache --device mps
+```
+
+## Export
+
+Export the model as `.mlpackage` that fits the CoreML to Vision package.
+
+```bash
+python export.py --weights runs/train/exp/weights/best.pt --include "coreml" --nms
+```
+
 ## <div align="center">Documentation</div>
 
 See the [YOLOv5 Docs](https://docs.ultralytics.com/yolov5) for full documentation on training, testing and deployment. See below for quickstart examples.

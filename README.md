@@ -1,4 +1,6 @@
-# YOLOv5 for IOS
+# YOLOv5 for iOS app hockey puck's detection training 
+
+This forked repo is customized for my iOS app's model training. We use the object detection model to capture the movement of the hockey puck in the live camera.
 
 Mimic `detect.py` details for `.mlpackage --nms`
 

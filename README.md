@@ -13,6 +13,7 @@ Mimic `detect.py` details for `.mlpackage --nms`
 **on m-chip macOS**
 
 ```bash
+conda activate hockeypuck
 python -c "import torch; print(torch.__version__); print(torch.backends.mps.is_available())"
 
 python train.py --img 640 --batch 16 --epochs 50 --data ./project/yaml/hockey.yaml --weights yolov5s.pt --cache --device mps
